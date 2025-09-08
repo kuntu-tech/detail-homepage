@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%; /* Apple白 */
+    --foreground: 0 0% 0%;   /* Apple黑 */
+    --card: 0 0% 100%;       /* 白 */
+    --card-foreground: 0 0% 0%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 0%;
+    --primary: 0 0% 0%;      /* 黑 */
+    --primary-foreground: 0 0% 100%; /* 白 */
+    --secondary: 0 0% 96%;   /* 银灰 */
+    --secondary-foreground: 0 0% 0%;
+    --muted: 0 0% 98%;       /* 更浅银灰 */
+    --muted-foreground: 0 0% 40%;
+    --accent: 210 100% 97%;  /* 柔和蓝 #eaf4ff */
+    --accent-foreground: 217 100% 53%; /* Apple蓝 #007aff */
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 90%;      /* 浅银灰 */
+    --input: 0 0% 95%;       /* 输入框背景银灰 */
+    --ring: 217 100% 53%;    /* Apple蓝 #007aff */
+    --chart-1: 210 100% 97%; /* 柔和蓝 */
+    --chart-2: 217 100% 53%; /* Apple蓝 */
+    --chart-3: 141 73% 58%;  /* Apple绿 #34c759 */
+    --chart-4: 141 73% 95%;  /* 柔和绿 #eafaf1 */
+    --chart-5: 0 0% 80%;     /* 银灰 */
+    --radius: 0.5rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 0 0% 0%;
+    --sidebar-primary: 0 0% 0%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 100% 97%;
+    --sidebar-accent-foreground: 217 100% 53%;
+    --sidebar-border: 0 0% 90%;
+    --sidebar-ring: 217 100% 53%;
+  }
+  .dark {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    --card: 0 0% 10%;
+    --card-foreground: 0 0% 100%;
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 0 0% 100%;
+    --primary-foreground: 0 0% 0%;
+    --secondary: 0 0% 20%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 60%;
+    --accent: 210 100% 20%;
+    --accent-foreground: 217 100% 73%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 20%;
+    --input: 0 0% 15%;
+    --ring: 217 100% 73%;
+    --chart-1: 210 100% 20%;
+    --chart-2: 217 100% 73%;
+    --chart-3: 141 73% 38%;
+    --chart-4: 141 73% 20%;
+    --chart-5: 0 0% 40%;
+    --radius: 0.5rem;
+    --sidebar-background: 0 0% 10%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 0 0% 100%;
+    --sidebar-primary-foreground: 0 0% 0%;
+    --sidebar-accent: 210 100% 20%;
+    --sidebar-accent-foreground: 217 100% 73%;
+    --sidebar-border: 0 0% 20%;
+    --sidebar-ring: 217 100% 73%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
