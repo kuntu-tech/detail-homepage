@@ -8,8 +8,8 @@ import { TextGenerateEffect } from "@/components/ui/text-generate-effect"
 import { BlurText } from "@/components/ui/animated-blur-text"
 import { StickyScroll } from "@/components/ui/sticky-scroll-reveal"
 import { Casestudy5 } from "@/components/ui/casestudy-5"
-import ShaderBackground from "@/components/ui/shader-background"
-import { ArrowRight, Sparkles, TrendingUp, Users, DollarSign, Shield } from "lucide-react"
+import { ArrowRight, Sparkles, TrendingUp, Users, DollarSign, Shield, Code, DollarSign as Dollar, Lock } from "lucide-react"
+import { GradientCard } from "@/components/ui/gradient-card"
 
 export default function HomePage() {
   return (
@@ -51,150 +51,22 @@ export default function HomePage() {
       {/* </CHANGE> */}
 
       <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8">
-        <Hero
-          title="Your Data + Datail = Your AI-Powered Business."
-          subtitle="Datail transforms your datasets into ChatGPT-native Apps — AI-powered businesses that unlock and monetize your data across billions of ChatGPT users."
-          ctaLabel="Build Your App"
-          ctaHref="#"
-          className="min-h-[60vh]"
-        />
-      </section>
-      {/* </CHANGE> */}
-
-      <section className="pb-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto">
-          <div className="bg-gradient-to-br from-gray-200 to-gray-300 rounded-2xl shadow-2xl overflow-hidden">
-            <div className="aspect-[16/10] flex items-center justify-center p-8">
-              <div className="bg-white rounded-lg shadow-xl w-full h-full p-6">
-                <div className="flex items-center gap-2 mb-4 pb-3 border-b border-gray-200">
-                  <div className="flex gap-1.5">
-                    <div className="w-3 h-3 rounded-full bg-red-400" />
-                    <div className="w-3 h-3 rounded-full bg-yellow-400" />
-                    <div className="w-3 h-3 rounded-full bg-green-400" />
-                  </div>
-                  <div className="flex-1 text-center">
-                    <span className="text-sm text-gray-600 font-medium">Datail Studio</span>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-12 gap-4 h-[calc(100%-3rem)]">
-                  {/* Sidebar */}
-                  <div className="col-span-3 bg-gray-50 rounded-lg p-4 space-y-3">
-                    <div className="text-xs text-gray-500 font-semibold mb-3">MY DATASETS</div>
-                    <div className="space-y-1.5">
-                      <div className="text-sm text-gray-900 py-2 px-3 bg-white border border-gray-300 rounded-md font-medium">
-                        housing_prices.csv
-                      </div>
-                      <div className="text-sm text-gray-600 py-2 px-3 hover:bg-gray-100 rounded-md cursor-pointer">
-                        solar_energy.csv
-                      </div>
-                      <div className="text-sm text-gray-600 py-2 px-3 hover:bg-gray-100 rounded-md cursor-pointer">
-                        retail_sales.csv
-                      </div>
-                    </div>
-                    <div className="pt-4 border-t border-gray-200">
-                      <Button className="w-full text-xs bg-black text-white hover:bg-gray-800 rounded-md py-2">
-                        + Upload New
-                      </Button>
-                    </div>
-                  </div>
-
-                  {/* Main editor area */}
-                  <div className="col-span-6 bg-white border border-gray-200 rounded-lg p-4 overflow-hidden">
-                    <div className="mb-3 pb-2 border-b border-gray-200">
-                      <div className="text-xs text-gray-500 font-semibold">DATA PREVIEW</div>
-                    </div>
-                    <div className="space-y-3">
-                      <div className="bg-gray-50 rounded p-3">
-                        <div className="text-xs text-gray-500 mb-2">Dataset: housing_prices.csv</div>
-                        <div className="font-mono text-xs text-gray-800 space-y-1">
-                          <div className="grid grid-cols-4 gap-2 font-semibold text-gray-600">
-                            <div>City</div>
-                            <div>Price</div>
-                            <div>Beds</div>
-                            <div>SqFt</div>
-                          </div>
-                          <div className="grid grid-cols-4 gap-2">
-                            <div>SF</div>
-                            <div>$1.2M</div>
-                            <div>3</div>
-                            <div>1800</div>
-                          </div>
-                          <div className="grid grid-cols-4 gap-2">
-                            <div>NYC</div>
-                            <div>$950K</div>
-                            <div>2</div>
-                            <div>1200</div>
-                          </div>
-                          <div className="grid grid-cols-4 gap-2">
-                            <div>LA</div>
-                            <div>$780K</div>
-                            <div>3</div>
-                            <div>1600</div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="bg-blue-50 border border-blue-200 rounded p-3">
-                        <div className="flex items-start gap-2">
-                          <Sparkles className="h-4 w-4 text-blue-600 mt-0.5 flex-shrink-0" />
-                          <div className="text-xs text-gray-800">
-                            <div className="font-semibold text-blue-900 mb-1">AI Analysis Complete</div>
-                            <div className="text-gray-700">
-                              Market potential: <span className="font-semibold text-green-600">High</span> • Target
-                              audience: <span className="font-semibold">2.4M real estate professionals</span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Right panel - AI insights */}
-                  <div className="col-span-3 bg-gray-50 rounded-lg p-4">
-                    <div className="text-xs text-gray-500 font-semibold mb-3">AI INSIGHTS</div>
-                    <div className="space-y-3">
-                      <div className="bg-white rounded-md p-3 border border-gray-200">
-                        <div className="flex items-center gap-2 mb-1">
-                          <TrendingUp className="h-3 w-3 text-green-600" />
-                          <div className="text-xs text-gray-600">Market Growth</div>
-                        </div>
-                        <div className="text-lg font-bold text-green-600">+13% YOY</div>
-                      </div>
-
-                      <div className="bg-white rounded-md p-3 border border-gray-200">
-                        <div className="flex items-center gap-2 mb-1">
-                          <Users className="h-3 w-3 text-blue-600" />
-                          <div className="text-xs text-gray-600">Audience Size</div>
-                        </div>
-                        <div className="text-lg font-bold text-blue-600">2.4M</div>
-                      </div>
-
-                      <div className="bg-white rounded-md p-3 border border-gray-200">
-                        <div className="flex items-center gap-2 mb-1">
-                          <DollarSign className="h-3 w-3 text-purple-600" />
-                          <div className="text-xs text-gray-600">Est. Revenue</div>
-                        </div>
-                        <div className="text-lg font-bold text-purple-600">$8K/mo</div>
-                      </div>
-
-                      <Button className="w-full text-xs bg-black text-white hover:bg-gray-800 rounded-md py-2 mt-2">
-                        Build ChatGPT App
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div className="min-h-[60vh]">
+          <Hero
+            title="Your Data + Datail = Your AI-Powered Business."
+            subtitle="Datail transforms your datasets into ChatGPT-native Apps — AI-powered businesses that unlock and monetize your data across billions of ChatGPT users."
+            ctaLabel="Build Your App"
+            ctaHref="#"
+          />
         </div>
       </section>
       {/* </CHANGE> */}
 
     
+    
       {/* </CHANGE> */}
 
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gray-900">
+      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-black">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6 text-balance">Best Time for Data Owners.</h2>
           <div className="mb-8">
@@ -233,7 +105,8 @@ export default function HomePage() {
       </section>
       {/* </CHANGE> */}
 
-      <section id="how-it-works" className="py-24 px-4 sm:px-6 lg:px-8 bg-gray-800">
+
+      <section id="how-it-works" className="py-24 px-4 sm:px-6 lg:px-8 bg-black">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
@@ -318,7 +191,7 @@ export default function HomePage() {
 
           {/* Step 2 */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-24">
-            <div className="order-2 lg:order-1">
+            <div>
               <div className="bg-gradient-to-br from-gray-200 to-gray-300 rounded-2xl p-8 aspect-square flex items-center justify-center">
                 <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-md">
                   <div className="flex items-center gap-2 mb-4 pb-3 border-b border-gray-200">
@@ -351,7 +224,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="order-1 lg:order-2">
+            <div>
               <div className="inline-block bg-black text-white text-sm font-semibold px-3 py-1 rounded-full mb-4">
                 Step 2
               </div>
@@ -487,296 +360,43 @@ export default function HomePage() {
       </section>
       {/* </CHANGE> */}
 
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gray-900">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6 text-balance">
-                No code. No pitch decks. No waiting.
-              </h2>
-              <p className="text-xl text-gray-300 leading-relaxed mb-6">
-                With Datail, data owners become entrepreneurs. Build your own AI apps in hours, get automatic market
-                insights and app design, and launch directly into ChatGPT's global app marketplace.
-              </p>
-              <p className="text-xl text-white font-semibold mb-8">
-                The world's fastest go-to-market platform — powered entirely by your data.
-              </p>
-              <Button className="bg-white text-black hover:bg-gray-200 rounded-full px-6 py-6 text-base">
-                Start Building Now
-              </Button>
+      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-black">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
+              Why choose Datail?
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div className="h-[450px]">
+              <GradientCard
+                title="No code. No pitch decks. No waiting."
+                description="With Datail, data owners become entrepreneurs. Build your own AI apps in hours, get automatic market insights and app design, and launch directly into ChatGPT's global app marketplace."
+                cta="Start Building Now"
+                icon={<Code className="w-5 h-5" />}
+              />
             </div>
-
-            <div className="bg-gradient-to-br from-gray-200 to-gray-300 rounded-2xl p-8 aspect-square flex items-center justify-center">
-              <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-md">
-                <div className="space-y-4">
-                  <div className="flex items-center gap-3 p-3 bg-green-50 border border-green-200 rounded-lg">
-                    <div className="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center flex-shrink-0">
-                      <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                        <path
-                          fillRule="evenodd"
-                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                    </div>
-                    <div>
-                      <div className="text-sm font-semibold text-gray-900">Data uploaded</div>
-                      <div className="text-xs text-gray-600">2 minutes ago</div>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center gap-3 p-3 bg-green-50 border border-green-200 rounded-lg">
-                    <div className="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center flex-shrink-0">
-                      <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                        <path
-                          fillRule="evenodd"
-                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                    </div>
-                    <div>
-                      <div className="text-sm font-semibold text-gray-900">Market analysis complete</div>
-                      <div className="text-xs text-gray-600">45 seconds ago</div>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center gap-3 p-3 bg-green-50 border border-green-200 rounded-lg">
-                    <div className="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center flex-shrink-0">
-                      <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                        <path
-                          fillRule="evenodd"
-                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                    </div>
-                    <div>
-                      <div className="text-sm font-semibold text-gray-900">ChatGPT App generated</div>
-                      <div className="text-xs text-gray-600">12 seconds ago</div>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center gap-3 p-3 bg-blue-50 border-2 border-blue-300 rounded-lg">
-                    <div className="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center flex-shrink-0 animate-pulse">
-                      <div className="w-2 h-2 bg-white rounded-full" />
-                    </div>
-                    <div>
-                      <div className="text-sm font-semibold text-gray-900">Publishing to ChatGPT Store...</div>
-                      <div className="text-xs text-gray-600">In progress</div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="mt-4 pt-4 border-t border-gray-200 text-center">
-                  <div className="text-xs text-gray-500">Total time elapsed</div>
-                  <div className="text-2xl font-bold text-gray-900">3m 42s</div>
-                </div>
-              </div>
+            <div className="h-[450px]">
+              <GradientCard
+                title="Simple, transparent pricing for data owners."
+                description="One simple subscription. Build unlimited apps, reach billions of users, keep 100% of your revenue."
+                icon={<Dollar className="w-5 h-5" />}
+              />
+            </div>
+            <div className="h-[450px]">
+              <GradientCard
+                title="Secure, verified, and always yours."
+                description="We never sell, share, or replicate your data. Each dataset is verified for quality, authenticity, and privacy — giving AIs (and users) full confidence in the source. You stay the owner. Always."
+                icon={<Lock className="w-5 h-5" />}
+              />
             </div>
           </div>
         </div>
       </section>
       {/* </CHANGE> */}
 
-      <section id="pricing" className="py-24 px-4 sm:px-6 lg:px-8 bg-gray-800">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6 text-balance">
-            Simple, transparent pricing for data owners.
-          </h2>
-          <p className="text-xl text-gray-300 mb-12 leading-relaxed">
-            One simple subscription. Build unlimited apps, reach billions of users, keep 100% of your revenue.
-          </p>
-
-          <div className="max-w-md mx-auto mb-12">
-            <Card className="p-8 hover:shadow-lg transition-shadow bg-white border-2 border-black">
-              <div className="text-sm font-semibold text-gray-500 mb-2">SUBSCRIPTION</div>
-              <div className="text-5xl font-bold text-gray-900 mb-2">$39</div>
-              <div className="text-sm text-gray-600 mb-6">per month</div>
-              <p className="text-base text-gray-600 mb-6">
-                Everything you need to turn your data into AI-powered businesses.
-              </p>
-              <div className="space-y-3 text-left mb-6">
-                <div className="flex items-start gap-3">
-                  <svg className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path
-                      fillRule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  <span className="text-sm text-gray-700">Unlimited datasets and apps</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <svg className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path
-                      fillRule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  <span className="text-sm text-gray-700">AI-powered market analysis</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <svg className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path
-                      fillRule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  <span className="text-sm text-gray-700">ChatGPT Store publishing</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <svg className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path
-                      fillRule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  <span className="text-sm text-gray-700">Advanced analytics dashboard</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <svg className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path
-                      fillRule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  <span className="text-sm text-gray-700">Priority support</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <svg className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path
-                      fillRule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  <span className="text-sm text-gray-700 font-semibold">Keep 100% of your revenue</span>
-                </div>
-              </div>
-              <Button className="w-full bg-black text-white hover:bg-gray-800 rounded-lg py-3">Get Started</Button>
-            </Card>
-          </div>
-        </div>
-      </section>
-      {/* </CHANGE> */}
-      {/* </CHANGE> */}
-
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gray-900">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="bg-gradient-to-br from-gray-200 to-gray-300 rounded-2xl p-8 aspect-square flex items-center justify-center">
-              <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-md">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
-                    <Shield className="h-6 w-6 text-green-600" />
-                  </div>
-                  <div>
-                    <div className="font-bold text-gray-900">Your Data Protection</div>
-                    <div className="text-sm text-gray-600">Enterprise-grade security</div>
-                  </div>
-                </div>
-
-                <div className="space-y-3">
-                  <div className="flex items-start gap-3 p-3 bg-green-50 rounded-lg">
-                    <svg
-                      className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                    <div>
-                      <div className="text-sm font-semibold text-gray-900">You own your data</div>
-                      <div className="text-xs text-gray-600">Never sold, shared, or replicated</div>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-3 p-3 bg-green-50 rounded-lg">
-                    <svg
-                      className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                    <div>
-                      <div className="text-sm font-semibold text-gray-900">Quality verified</div>
-                      <div className="text-xs text-gray-600">Authenticity and accuracy guaranteed</div>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-3 p-3 bg-green-50 rounded-lg">
-                    <svg
-                      className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                    <div>
-                      <div className="text-sm font-semibold text-gray-900">Privacy compliant</div>
-                      <div className="text-xs text-gray-600">GDPR, CCPA, and SOC 2 certified</div>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-3 p-3 bg-green-50 rounded-lg">
-                    <svg
-                      className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                    <div>
-                      <div className="text-sm font-semibold text-gray-900">End-to-end encryption</div>
-                      <div className="text-xs text-gray-600">Data encrypted in transit and at rest</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6 text-balance">
-                Secure, verified, and always yours.
-              </h2>
-              <p className="text-xl text-gray-300 leading-relaxed mb-6">
-                We never sell, share, or replicate your data. Each dataset is verified for quality, authenticity, and
-                privacy — giving AIs (and users) full confidence in the source.
-              </p>
-              <p className="text-xl text-white font-semibold mb-8">You stay the owner. Always.</p>
-              <a href="#" className="text-white font-semibold inline-flex items-center hover:gap-2 transition-all">
-                Learn about our security practices <ArrowRight className="ml-1 h-4 w-4" />
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-      {/* </CHANGE> */}
-
-      <section id="vision" className="py-32 px-4 sm:px-6 lg:px-8 bg-gray-800">
-        <div className="max-w-4xl mx-auto text-center">
+      <section id="vision" className="relative py-32 px-4 sm:px-6 lg:px-8 bg-black overflow-hidden">
+        <div className="relative z-10 max-w-4xl mx-auto text-center">
           <BlurText
             text="In the AI era, creators are data owners."
             delay={150}
@@ -812,7 +432,7 @@ export default function HomePage() {
       </section>
       {/* </CHANGE> */}
 
-      <footer className="py-12 px-4 sm:px-6 lg:px-8 bg-gray-900 border-t border-gray-700">
+      <footer className="py-12 px-4 sm:px-6 lg:px-8 bg-black border-t border-gray-700">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
             <div>

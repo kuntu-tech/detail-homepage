@@ -18,8 +18,11 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable} antialiased`}>
+    <html lang="en" className="dark bg-black" suppressHydrationWarning>
+      <body
+        suppressHydrationWarning
+        className={`font-sans ${GeistSans.variable} ${GeistMono.variable} antialiased bg-black text-white`}
+      >
         <Suspense fallback={null}>
           {children}
           <Analytics />
