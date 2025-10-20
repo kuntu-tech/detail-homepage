@@ -48,8 +48,8 @@ export const GradientCard = ({ title, description, cta, icon }: GradientCardProp
         className="relative rounded-[32px] overflow-hidden w-full h-full"
         style={{
           transformStyle: "preserve-3d",
-          backgroundColor: "#0e131f",
-          boxShadow: "0 -10px 100px 10px rgba(78, 99, 255, 0.25), 0 0 10px 0 rgba(0, 0, 0, 0.5)",
+          backgroundColor: "#0e0e0f",
+          boxShadow: "0 -10px 100px 10px rgba(255, 255, 255, 0.08), 0 0 10px 0 rgba(0, 0, 0, 0.5)",
         }}
         initial={{ y: 0 }}
         animate={{
@@ -120,18 +120,18 @@ export const GradientCard = ({ title, description, cta, icon }: GradientCardProp
           }}
         />
 
-        {/* Purple/blue glow effect matching the image */}
+        {/* Neutral grayscale glow effect */}
         <motion.div
           className="absolute bottom-0 left-0 right-0 h-2/3 z-20"
           style={{
             background: `
-              radial-gradient(ellipse at bottom right, rgba(172, 92, 255, 0.7) -10%, rgba(79, 70, 229, 0) 70%),
-              radial-gradient(ellipse at bottom left, rgba(56, 189, 248, 0.7) -10%, rgba(79, 70, 229, 0) 70%)
+              radial-gradient(ellipse at bottom right, rgba(255,255,255,0.18) -10%, rgba(255,255,255,0) 70%),
+              radial-gradient(ellipse at bottom left, rgba(255,255,255,0.14) -10%, rgba(255,255,255,0) 70%)
             `,
-            filter: "blur(40px)",
+            filter: "blur(36px)",
           }}
           animate={{
-            opacity: isHovered ? 0.9 : 0.8,
+            opacity: isHovered ? 0.6 : 0.5,
             y: isHovered ? rotation.x * 0.5 : 0,
             z: 0
           }}
@@ -141,17 +141,17 @@ export const GradientCard = ({ title, description, cta, icon }: GradientCardProp
           }}
         />
 
-        {/* Central purple glow as seen in the image */}
+        {/* Central neutral glow */}
         <motion.div
           className="absolute bottom-0 left-0 right-0 h-2/3 z-21"
           style={{
             background: `
-              radial-gradient(circle at bottom center, rgba(161, 58, 229, 0.7) -20%, rgba(79, 70, 229, 0) 60%)
+              radial-gradient(circle at bottom center, rgba(255,255,255,0.16) -20%, rgba(255,255,255,0) 60%)
             `,
-            filter: "blur(45px)",
+            filter: "blur(40px)",
           }}
           animate={{
-            opacity: isHovered ? 0.85 : 0.75,
+            opacity: isHovered ? 0.5 : 0.45,
             y: isHovered ? `calc(10% + ${rotation.x * 0.3}px)` : "10%",
             z: 0
           }}
@@ -169,8 +169,8 @@ export const GradientCard = ({ title, description, cta, icon }: GradientCardProp
           }}
           animate={{
             boxShadow: isHovered
-              ? "0 0 20px 4px rgba(172, 92, 255, 0.9), 0 0 30px 6px rgba(138, 58, 185, 0.7), 0 0 40px 8px rgba(56, 189, 248, 0.5)"
-              : "0 0 15px 3px rgba(172, 92, 255, 0.8), 0 0 25px 5px rgba(138, 58, 185, 0.6), 0 0 35px 7px rgba(56, 189, 248, 0.4)",
+              ? "0 0 20px 4px rgba(255, 255, 255, 0.35), 0 0 30px 6px rgba(255, 255, 255, 0.2), 0 0 40px 8px rgba(255, 255, 255, 0.1)"
+              : "0 0 15px 3px rgba(255, 255, 255, 0.25), 0 0 25px 5px rgba(255, 255, 255, 0.15), 0 0 35px 7px rgba(255, 255, 255, 0.08)",
             opacity: isHovered ? 1 : 0.9,
             z: 0.5
           }}
@@ -186,8 +186,8 @@ export const GradientCard = ({ title, description, cta, icon }: GradientCardProp
           }}
           animate={{
             boxShadow: isHovered
-              ? "0 0 20px 4px rgba(172, 92, 255, 0.9), 0 0 30px 6px rgba(138, 58, 185, 0.7), 0 0 40px 8px rgba(56, 189, 248, 0.5)"
-              : "0 0 15px 3px rgba(172, 92, 255, 0.8), 0 0 25px 5px rgba(138, 58, 185, 0.6), 0 0 35px 7px rgba(56, 189, 248, 0.4)",
+              ? "0 0 20px 4px rgba(255, 255, 255, 0.35), 0 0 30px 6px rgba(255, 255, 255, 0.2), 0 0 40px 8px rgba(255, 255, 255, 0.1)"
+              : "0 0 15px 3px rgba(255, 255, 255, 0.25), 0 0 25px 5px rgba(255, 255, 255, 0.15), 0 0 35px 7px rgba(255, 255, 255, 0.08)",
             opacity: isHovered ? 1 : 0.9,
             z: 0.5
           }}
@@ -203,8 +203,8 @@ export const GradientCard = ({ title, description, cta, icon }: GradientCardProp
           }}
           animate={{
             boxShadow: isHovered
-              ? "0 0 20px 4px rgba(172, 92, 255, 0.9), 0 0 30px 6px rgba(138, 58, 185, 0.7), 0 0 40px 8px rgba(56, 189, 248, 0.5)"
-              : "0 0 15px 3px rgba(172, 92, 255, 0.8), 0 0 25px 5px rgba(138, 58, 185, 0.6), 0 0 35px 7px rgba(56, 189, 248, 0.4)",
+              ? "0 0 20px 4px rgba(255, 255, 255, 0.35), 0 0 30px 6px rgba(255, 255, 255, 0.2), 0 0 40px 8px rgba(255, 255, 255, 0.1)"
+              : "0 0 15px 3px rgba(255, 255, 255, 0.25), 0 0 25px 5px rgba(255, 255, 255, 0.15), 0 0 35px 7px rgba(255, 255, 255, 0.08)",
             opacity: isHovered ? 1 : 0.9,
             z: 0.5
           }}
@@ -220,8 +220,8 @@ export const GradientCard = ({ title, description, cta, icon }: GradientCardProp
           }}
           animate={{
             boxShadow: isHovered
-              ? "0 0 20px 4px rgba(172, 92, 255, 0.9), 0 0 30px 6px rgba(138, 58, 185, 0.7), 0 0 40px 8px rgba(56, 189, 248, 0.5)"
-              : "0 0 15px 3px rgba(172, 92, 255, 0.8), 0 0 25px 5px rgba(138, 58, 185, 0.6), 0 0 35px 7px rgba(56, 189, 248, 0.4)",
+              ? "0 0 20px 4px rgba(255, 255, 255, 0.35), 0 0 30px 6px rgba(255, 255, 255, 0.2), 0 0 40px 8px rgba(255, 255, 255, 0.1)"
+              : "0 0 15px 3px rgba(255, 255, 255, 0.25), 0 0 25px 5px rgba(255, 255, 255, 0.15), 0 0 35px 7px rgba(255, 255, 255, 0.08)",
             opacity: isHovered ? 1 : 0.9,
             z: 0.5
           }}
@@ -237,8 +237,8 @@ export const GradientCard = ({ title, description, cta, icon }: GradientCardProp
           }}
           animate={{
             boxShadow: isHovered
-              ? "0 0 20px 4px rgba(172, 92, 255, 0.9), 0 0 30px 6px rgba(138, 58, 185, 0.7), 0 0 40px 8px rgba(56, 189, 248, 0.5)"
-              : "0 0 15px 3px rgba(172, 92, 255, 0.8), 0 0 25px 5px rgba(138, 58, 185, 0.6), 0 0 35px 7px rgba(56, 189, 248, 0.4)",
+              ? "0 0 20px 4px rgba(255, 255, 255, 0.35), 0 0 30px 6px rgba(255, 255, 255, 0.2), 0 0 40px 8px rgba(255, 255, 255, 0.1)"
+              : "0 0 15px 3px rgba(255, 255, 255, 0.25), 0 0 25px 5px rgba(255, 255, 255, 0.15), 0 0 35px 7px rgba(255, 255, 255, 0.08)",
             opacity: isHovered ? 1 : 0.9,
             z: 0.5
           }}
