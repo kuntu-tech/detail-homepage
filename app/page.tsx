@@ -1,16 +1,26 @@
-"use client"
+"use client";
 
-import { Button } from "@/components/ui/button"
-import { Card } from "@/components/ui/card"
-import { SparklesCore } from "@/components/ui/sparkles"
-import { Hero } from "@/components/ui/hero-1"
-import { TextGenerateEffect } from "@/components/ui/text-generate-effect"
-import { BlurText } from "@/components/ui/animated-blur-text"
-import { StickyScroll } from "@/components/ui/sticky-scroll-reveal"
-import { Casestudy5 } from "@/components/ui/casestudy-5"
-import { ArrowRight, Sparkles, TrendingUp, Users, DollarSign, Shield, Code, DollarSign as Dollar, Lock } from "lucide-react"
-import { HowItWorks } from "@/components/ui/how-it-works"
-import { GradientCard } from "@/components/ui/gradient-card"
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { SparklesCore } from "@/components/ui/sparkles";
+import { Hero } from "@/components/ui/hero-1";
+import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
+import { BlurText } from "@/components/ui/animated-blur-text";
+import { StickyScroll } from "@/components/ui/sticky-scroll-reveal";
+import { Casestudy5 } from "@/components/ui/casestudy-5";
+import {
+  ArrowRight,
+  Sparkles,
+  TrendingUp,
+  Users,
+  DollarSign,
+  Shield,
+  Code,
+  DollarSign as Dollar,
+  Lock,
+} from "lucide-react";
+import { HowItWorks } from "@/components/ui/how-it-works";
+import { GradientCard } from "@/components/ui/gradient-card";
 
 export default function HomePage() {
   return (
@@ -26,25 +36,41 @@ export default function HomePage() {
             </div>
 
             <div className="hidden md:flex items-center gap-8">
-              <a href="#features" className="text-sm text-gray-300 hover:text-white transition-colors">
+              <a
+                href="#features"
+                className="text-sm text-gray-300 hover:text-white transition-colors"
+              >
                 Features
               </a>
-              <a href="#how-it-works" className="text-sm text-gray-300 hover:text-white transition-colors">
+              <a
+                href="#how-it-works"
+                className="text-sm text-gray-300 hover:text-white transition-colors"
+              >
                 How It Works
               </a>
-              <a href="#pricing" className="text-sm text-gray-300 hover:text-white transition-colors">
+              <a
+                href="#pricing"
+                className="text-sm text-gray-300 hover:text-white transition-colors"
+              >
                 Pricing
               </a>
-              <a href="#vision" className="text-sm text-gray-300 hover:text-white transition-colors">
+              <a
+                href="#vision"
+                className="text-sm text-gray-300 hover:text-white transition-colors"
+              >
                 Vision
               </a>
             </div>
 
             <div className="flex items-center gap-4">
-              <Button variant="ghost" className="text-sm text-gray-300 hover:text-white">
-                Sign In
+              <Button
+                className="bg-white text-black hover:bg-gray-200 rounded-full text-sm px-5"
+                onClick={() => {
+                  window.location.href = "http://localhost:3000";
+                }}
+              >
+                Get Started
               </Button>
-              <Button className="bg-white text-black hover:bg-gray-200 rounded-full text-sm px-5">Get Started</Button>
             </div>
           </div>
         </div>
@@ -57,19 +83,21 @@ export default function HomePage() {
             title="Your Data + Datail = Your AI-Powered Business"
             subtitle="Datail transforms your datasets into ChatGPT-native Apps — AI-powered businesses that unlock and monetize your data across billions of ChatGPT users."
             ctaLabel="Build Your App"
-            ctaHref="#"
+            ctaHref="http://localhost:3000"
+            target="_self"
+            rel="self"
           />
         </div>
       </section>
       {/* </CHANGE> */}
 
-    
-    
       {/* </CHANGE> */}
 
       <section className="py-48 px-4 sm:px-6 lg:px-8 bg-black">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6 text-balance">Best Time for Data Owners.</h2>
+          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6 text-balance">
+            Best Time for Data Owners.
+          </h2>
           <div className="mb-8">
             <TextGenerateEffect
               duration={1.2}
@@ -98,14 +126,18 @@ export default function HomePage() {
             />
           </div>
           <div className="mt-8">
-            <Button className="bg-white text-black hover:bg-gray-200 rounded-full px-6 py-6 text-base">
+            <Button
+              className="bg-white text-black hover:bg-gray-200 rounded-full px-6 py-6 text-base"
+              onClick={() => {
+                window.location.href = "http://localhost:3000";
+              }}
+            >
               Turn My Data into an App
             </Button>
           </div>
         </div>
       </section>
       {/* </CHANGE> */}
-
 
       <HowItWorks className="bg-black" />
       {/* </CHANGE> */}
@@ -144,7 +176,10 @@ export default function HomePage() {
       </section>
       {/* </CHANGE> */}
 
-      <section id="vision" className="relative py-64 px-4 sm:px-6 lg:px-8 bg-black overflow-hidden">
+      <section
+        id="vision"
+        className="relative py-64 px-4 sm:px-6 lg:px-8 bg-black overflow-hidden"
+      >
         <div className="relative z-10 max-w-4xl mx-auto text-center">
           <BlurText
             text="In the AI era, creators are data owners."
@@ -174,7 +209,6 @@ export default function HomePage() {
             direction="top"
             className="text-3xl font-bold text-white mb-12"
           />
-         
         </div>
       </section>
       {/* </CHANGE> */}
@@ -189,58 +223,102 @@ export default function HomePage() {
                 </div>
                 <span className="font-semibold text-lg text-white">Datail</span>
               </div>
-              <p className="text-sm text-gray-300">Where Data Becomes Business</p>
+              <p className="text-sm text-gray-300">
+                Where Data Becomes Business
+              </p>
             </div>
 
             <div>
-              <div className="text-sm font-semibold text-white mb-3">Product</div>
+              <div className="text-sm font-semibold text-white mb-3">
+                Product
+              </div>
               <div className="space-y-2">
-                <a href="#" className="block text-sm text-gray-300 hover:text-white transition-colors">
+                <a
+                  href="#"
+                  className="block text-sm text-gray-300 hover:text-white transition-colors"
+                >
                   Features
                 </a>
-                <a href="#" className="block text-sm text-gray-300 hover:text-white transition-colors">
+                <a
+                  href="#"
+                  className="block text-sm text-gray-300 hover:text-white transition-colors"
+                >
                   How It Works
                 </a>
-                <a href="#" className="block text-sm text-gray-300 hover:text-white transition-colors">
+                <a
+                  href="#"
+                  className="block text-sm text-gray-300 hover:text-white transition-colors"
+                >
                   Pricing
                 </a>
-                <a href="#" className="block text-sm text-gray-300 hover:text-white transition-colors">
+                <a
+                  href="#"
+                  className="block text-sm text-gray-300 hover:text-white transition-colors"
+                >
                   Examples
                 </a>
               </div>
             </div>
 
             <div>
-              <div className="text-sm font-semibold text-white mb-3">Resources</div>
+              <div className="text-sm font-semibold text-white mb-3">
+                Resources
+              </div>
               <div className="space-y-2">
-                <a href="#" className="block text-sm text-gray-300 hover:text-white transition-colors">
+                <a
+                  href="#"
+                  className="block text-sm text-gray-300 hover:text-white transition-colors"
+                >
                   Documentation
                 </a>
-                <a href="#" className="block text-sm text-gray-300 hover:text-white transition-colors">
+                <a
+                  href="#"
+                  className="block text-sm text-gray-300 hover:text-white transition-colors"
+                >
                   API Reference
                 </a>
-                <a href="#" className="block text-sm text-gray-300 hover:text-white transition-colors">
+                <a
+                  href="#"
+                  className="block text-sm text-gray-300 hover:text-white transition-colors"
+                >
                   Blog
                 </a>
-                <a href="#" className="block text-sm text-gray-300 hover:text-white transition-colors">
+                <a
+                  href="#"
+                  className="block text-sm text-gray-300 hover:text-white transition-colors"
+                >
                   Support
                 </a>
               </div>
             </div>
 
             <div>
-              <div className="text-sm font-semibold text-white mb-3">Company</div>
+              <div className="text-sm font-semibold text-white mb-3">
+                Company
+              </div>
               <div className="space-y-2">
-                <a href="#" className="block text-sm text-gray-300 hover:text-white transition-colors">
+                <a
+                  href="#"
+                  className="block text-sm text-gray-300 hover:text-white transition-colors"
+                >
                   About
                 </a>
-                <a href="#" className="block text-sm text-gray-300 hover:text-white transition-colors">
+                <a
+                  href="#"
+                  className="block text-sm text-gray-300 hover:text-white transition-colors"
+                >
                   Privacy
                 </a>
-                <a href="#" className="block text-sm text-gray-300 hover:text-white transition-colors">
+                <a
+                  href="#"
+                  className="block text-sm text-gray-300 hover:text-white transition-colors"
+                >
                   Terms
                 </a>
-                <a href="#" className="block text-sm text-gray-300 hover:text-white transition-colors">
+                <a
+                  href="#"
+                  className="block text-sm text-gray-300 hover:text-white transition-colors"
+                >
                   Contact
                 </a>
               </div>
@@ -248,11 +326,13 @@ export default function HomePage() {
           </div>
 
           <div className="pt-8 text-center">
-            <p className="text-sm text-gray-400">© 2025 Datail Technologies. All rights reserved.</p>
+            <p className="text-sm text-gray-400">
+              © 2025 Datail Technologies. All rights reserved.
+            </p>
           </div>
         </div>
       </footer>
       {/* </CHANGE> */}
     </div>
-  )
+  );
 }

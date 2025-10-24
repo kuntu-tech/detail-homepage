@@ -1,12 +1,14 @@
-"use client"
+"use client";
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 
 interface HeroProps {
-  title: string
-  subtitle: string
-  ctaLabel?: string
-  ctaHref?: string
+  title: string;
+  subtitle: string;
+  ctaLabel?: string;
+  ctaHref?: string;
+  target?: string;
+  rel?: string;
 }
 
 export function Hero({
@@ -14,6 +16,8 @@ export function Hero({
   subtitle,
   ctaLabel = "Explore Now",
   ctaHref = "#",
+  target = "_blank",
+  rel = "noopener noreferrer",
 }: HeroProps) {
   return (
     <section
@@ -43,7 +47,6 @@ export function Hero({
         animate-fade-up"
       />
 
-
       {/* Title */}
       <h1
         className="animate-fade-in -translate-y-4 text-balance 
@@ -71,7 +74,9 @@ export function Hero({
             asChild
             className="mt-[-20px] w-fit md:w-52 z-20 font-geist tracking-tighter text-center text-lg"
           >
-            <a href={ctaHref}>{ctaLabel}</a>
+            <a href={ctaHref} target={target} rel="noopener noreferrer">
+              {ctaLabel}
+            </a>
           </Button>
         </div>
       )}
@@ -83,7 +88,5 @@ export function Hero({
         after:[background:linear-gradient(to_top,hsl(var(--background))_10%,transparent)]"
       />
     </section>
-  )
+  );
 }
-
-
