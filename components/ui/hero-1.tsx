@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
+import { CheckCircle2 } from "lucide-react";
 
 interface HeroProps {
   title: string;
@@ -9,6 +10,8 @@ interface HeroProps {
   ctaHref?: string;
   target?: string;
   rel?: string;
+  isJoined?: boolean;
+  onOpenWaitlist?: () => void;
 }
 
 export function Hero({
@@ -18,7 +21,15 @@ export function Hero({
   ctaHref = "#",
   target = "_blank",
   rel = "noopener noreferrer",
+  isJoined = false,
+  onOpenWaitlist,
 }: HeroProps) {
+  const handleButtonClick = () => {
+    if (onOpenWaitlist && !isJoined) {
+      onOpenWaitlist();
+    }
+  };
+
   return (
     <section
       id="hero"
@@ -44,7 +55,7 @@ export function Hero({
         -translate-x-1/2 rounded-[100%] border-[#B48CDE] bg-white dark:bg-black 
         bg-[radial-gradient(closest-side,#fff_82%,#000000)] 
         dark:bg-[radial-gradient(closest-side,#000_82%,#ffffff)] 
-        animate-fade-up"
+        animate-fade-up z-10"
       />
 
       {/* Title */}
@@ -69,14 +80,40 @@ export function Hero({
 
       {/* CTA */}
       {ctaLabel && (
-        <div className="flex justify-center">
-          <Button
-            asChild
-            className="mt-[-20px] w-fit md:w-52 z-20 font-geist tracking-tighter text-center text-lg"
+        <div className="flex justify-center relative z-50">
+          {/* <Button
+            onClick={handleButtonClick}
+            disabled={isJoined}
+            className={`mt-[-20px] w-fit md:w-52 z-20 font-geist tracking-tighter text-center text-lg ${
+              isJoined ? "bg-black-100 text-white-300 cursor-not-allowed" : ""
+            }`}
           >
-            <a href={ctaHref} target={target} rel="noopener noreferrer">
-              {ctaLabel}
-            </a>
+            {isJoined ? (
+              <span className="flex items-center gap-2">
+                <CheckCircle2 className="w-5 h-5" />
+                You're on the waitlistrr
+              </span>
+            ) : (
+              ctaLabel
+            )}
+          </Button> */}
+          <Button
+            className={`relative z-50 rounded-full px-6 py-6 text-base ${
+              isJoined
+                ? "bg-gray-600 text-gray-300 cursor-not-allowed"
+                : "bg-white text-black hover:bg-gray-200"
+            }`}
+            onClick={handleButtonClick}
+            disabled={isJoined}
+          >
+            {isJoined ? (
+              <span className="flex items-center gap-2">
+                <CheckCircle2 className="w-5 h-5" />
+                You're on the waitlist
+              </span>
+            ) : (
+              ctaLabel
+            )}
           </Button>
         </div>
       )}

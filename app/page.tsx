@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { SparklesCore } from "@/components/ui/sparkles";
@@ -18,11 +19,26 @@ import {
   Code,
   DollarSign as Dollar,
   Lock,
+  CheckCircle2,
 } from "lucide-react";
 import { HowItWorks } from "@/components/ui/how-it-works";
 import { GradientCard } from "@/components/ui/gradient-card";
+import { WaitlistDialog } from "@/components/ui/waitlist-dialog";
 
 export default function HomePage() {
+  const [waitlistOpen, setWaitlistOpen] = useState(false);
+  const [isJoined, setIsJoined] = useState(false);
+
+  // Check localStorage on mount
+  useEffect(() => {
+    const joined = localStorage.getItem("waitlist_joined") === "true";
+    setIsJoined(joined);
+  }, []);
+
+  const handleJoined = () => {
+    setIsJoined(true);
+  };
+
   return (
     <div className="min-h-screen bg-black">
       <nav className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-sm border-b border-gray-700">
@@ -55,22 +71,33 @@ export default function HomePage() {
                 Pricing
               </a>
               <a
-                href="#vision"
+                href="https://community-mobile-web.onrender.com/"
+                rel="noopener noreferrer"
                 className="text-sm text-gray-300 hover:text-white transition-colors"
               >
-                Vision
+                Community
               </a>
             </div>
 
             <div className="flex items-center gap-4">
-              <Button
-                className="bg-white text-black hover:bg-gray-200 rounded-full text-sm px-5"
-                onClick={() => {
-                  window.location.href = "http://localhost:3000";
-                }}
+              {/* <Button
+                className={`rounded-full px-6 py-3 text-base ${
+                  isJoined 
+                    ? 'bg-gray-600 text-gray-300 cursor-not-allowed opacity-60' 
+                    : 'bg-white text-black hover:bg-gray-200'
+                }`}
+                onClick={() => !isJoined && setWaitlistOpen(true)}
+                disabled={isJoined}
               >
-                Get Started
-              </Button>
+                {isJoined ? (
+                  <span className="flex items-center gap-2">
+                    <CheckCircle2 className="w-4 h-4" />
+                    You're on the waitlist
+                  </span>
+                ) : (
+                  'Join Our Waitlist'
+                )}
+              </Button> */}
             </div>
           </div>
         </div>
@@ -82,10 +109,12 @@ export default function HomePage() {
           <Hero
             title="Your Data + Datail = Your AI-Powered Business"
             subtitle="Datail transforms your datasets into ChatGPT-native Apps — AI-powered businesses that unlock and monetize your data across billions of ChatGPT users."
-            ctaLabel="Build Your App"
-            ctaHref="http://localhost:3000"
+            ctaLabel="Join Our Waitlist"
+            ctaHref="https://web.datail.ai"
             target="_self"
             rel="self"
+            isJoined={isJoined}
+            onOpenWaitlist={() => setWaitlistOpen(true)}
           />
         </div>
       </section>
@@ -127,12 +156,22 @@ export default function HomePage() {
           </div>
           <div className="mt-8">
             <Button
-              className="bg-white text-black hover:bg-gray-200 rounded-full px-6 py-6 text-base"
-              onClick={() => {
-                window.location.href = "http://localhost:3000";
-              }}
+              className={`rounded-full px-6 py-6 text-base ${
+                isJoined
+                  ? "bg-gray-600 text-gray-300 cursor-not-allowed"
+                  : "bg-white text-black hover:bg-gray-200"
+              }`}
+              onClick={() => !isJoined && setWaitlistOpen(true)}
+              disabled={isJoined}
             >
-              Turn My Data into an App
+              {isJoined ? (
+                <span className="flex items-center gap-2">
+                  <CheckCircle2 className="w-5 h-5" />
+                  You're on the waitlist
+                </span>
+              ) : (
+                "Join Our Waitlist"
+              )}
             </Button>
           </div>
         </div>
@@ -176,8 +215,138 @@ export default function HomePage() {
       </section>
       {/* </CHANGE> */}
 
+      <section id="pricing" className="py-24 px-4 sm:px-6 lg:px-8 bg-black">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6 text-balance">
+            Simple, transparent pricing for data owners.
+          </h2>
+          <p className="text-xl text-gray-300 mb-12 leading-relaxed">
+            One simple subscription. Build unlimited apps, reach billions of
+            users, keep 100% of your revenue.
+          </p>
+
+          <div className="max-w-md mx-auto mb-12">
+            <Card className="p-8 hover:shadow-lg transition-shadow bg-black border-2 border-gray-700">
+              <div className="text-sm font-semibold text-gray-400 mb-2">
+                SUBSCRIPTION
+              </div>
+              <div className="text-5xl font-bold text-white mb-2">
+                $39<span className="text-sm">/month</span>
+              </div>
+              <p className="text-base text-gray-300 mb-6">
+                Everything you need to turn your data into AI-powered
+                businesses.
+              </p>
+              <div className="space-y-3 text-left mb-6">
+                <div className="flex items-start gap-3">
+                  <svg
+                    className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                  <span className="text-sm text-white">
+                    Unlimited datasets and apps
+                  </span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <svg
+                    className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                  <span className="text-sm text-white">
+                    AI-powered market analysis
+                  </span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <svg
+                    className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                  <span className="text-sm text-white">
+                    ChatGPT Store publishing
+                  </span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <svg
+                    className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                  <span className="text-sm text-white">
+                    Advanced analytics dashboard
+                  </span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <svg
+                    className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                  <span className="text-sm text-white">Priority support</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <svg
+                    className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                  <span className="text-sm text-white font-semibold">
+                    Keep 100% of your revenue
+                  </span>
+                </div>
+              </div>
+              {/* <Button
+                className="w-full bg-white text-black hover:bg-gray-200 rounded-lg py-3"
+                onClick={() => setWaitlistOpen(true)}
+              >
+                Subscribe
+              </Button> */}
+            </Card>
+          </div>
+        </div>
+      </section>
+      {/* </CHANGE> */}
+
       <section
-        id="vision"
+        id="community"
         className="relative py-64 px-4 sm:px-6 lg:px-8 bg-black overflow-hidden"
       >
         <div className="relative z-10 max-w-4xl mx-auto text-center">
@@ -333,6 +502,12 @@ export default function HomePage() {
         </div>
       </footer>
       {/* </CHANGE> */}
+
+      <WaitlistDialog
+        open={waitlistOpen}
+        onOpenChange={setWaitlistOpen}
+        onJoined={handleJoined}
+      />
     </div>
   );
 }
