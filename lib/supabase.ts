@@ -12,7 +12,22 @@ const supabaseServiceKey =
 let supabaseInstance: SupabaseClient | null = null;
 let supabaseAdminInstance: SupabaseClient | null = null;
 
+// Client-side Supabase client (for browser)
 export const supabase = (() => {
+  if (typeof window === "undefined") {
+    // Server-side: create a simple client without browser-specific features
+    if (!supabaseInstance) {
+      supabaseInstance = createClient(supabaseUrl, supabaseAnonKey, {
+        auth: {
+          autoRefreshToken: false,
+          persistSession: false,
+        },
+      });
+    }
+    return supabaseInstance;
+  }
+
+  // Client-side: create client with browser features
   if (!supabaseInstance) {
     supabaseInstance = createClient(supabaseUrl, supabaseAnonKey, {
       auth: {

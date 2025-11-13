@@ -3,6 +3,21 @@ import { supabase } from "@/lib/supabase";
 
 export async function POST(request: NextRequest) {
   try {
+    // Validate Supabase configuration
+    if (
+      !process.env.NEXT_PUBLIC_SUPABASE_URL ||
+      !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+    ) {
+      console.error("Supabase configuration missing");
+      return NextResponse.json(
+        {
+          error: "Failed to save data",
+          details: "Server configuration error. Please contact administrator.",
+        },
+        { status: 500 }
+      );
+    }
+
     const body = await request.json();
     const { name, email, role, company_size } = body;
 
@@ -24,15 +39,27 @@ export async function POST(request: NextRequest) {
     }
 
     // Check if email already exists
-    const { data: existingUser } = await supabase
-      .from("datail_seed_users")
-      .select("email")
-      .eq("email", email.trim().toLowerCase())
-      .single();
+    const normalizedEmail = email.trim().toLowerCase();
 
-    if (existingUser) {
+    const { data: existingUsers, error: checkError } = await supabase
+      .from("datail_seed_users")
+      .select("email, name")
+      .eq("email", normalizedEmail)
+      .limit(1);
+
+    if (checkError) {
+      console.error("Error checking existing email:", checkError);
+      // If check fails, we'll let the insert attempt proceed
+      // The database unique constraint will catch duplicates
+    }
+
+    if (existingUsers && existingUsers.length > 0) {
       return NextResponse.json(
-        { error: "Email already registered" },
+        {
+          error: "Email already registered",
+          details:
+            "This email address has already been registered. Please use a different email or contact support if you believe this is an error.",
+        },
         { status: 409 }
       );
     }
@@ -40,27 +67,59 @@ export async function POST(request: NextRequest) {
     // Insert data into datail_seed_users table
     // Note: role field maps to expertise field
     // Do not specify id field, let database auto-generate
+    const insertData = {
+      name: name.trim(),
+      email: email.trim().toLowerCase(),
+      expertise: role, // role maps to expertise field
+      company_size: company_size,
+    };
+
+    console.log("Attempting to insert data:", insertData);
+
     const { data, error } = await supabase
       .from("datail_seed_users")
-      .insert([
-        {
-          name: name.trim(),
-          email: email.trim().toLowerCase(),
-          expertise: role, // role maps to expertise field
-          company_size: company_size,
-        },
-      ])
+      .insert([insertData])
       .select()
       .single();
 
     if (error) {
       console.error("Supabase error:", error);
+      console.error("Error code:", error.code);
+      console.error("Error message:", error.message);
       console.error("Error details:", JSON.stringify(error, null, 2));
+      console.error(
+        "Supabase URL:",
+        process.env.NEXT_PUBLIC_SUPABASE_URL ? "Set" : "Not set"
+      );
+
+      // Check for specific error types
+      if (error.code === "PGRST116") {
+        return NextResponse.json(
+          {
+            error: "Failed to save data",
+            details:
+              "No rows returned. Please check if the table exists and RLS policies allow inserts.",
+          },
+          { status: 500 }
+        );
+      }
+
+      if (error.code === "42501") {
+        return NextResponse.json(
+          {
+            error: "Failed to save data",
+            details:
+              "Permission denied. Please check RLS (Row Level Security) policies.",
+          },
+          { status: 500 }
+        );
+      }
 
       // If primary key conflict, provide more friendly error message
       if (
         error.message?.includes("duplicate key") ||
-        error.message?.includes("unique constraint")
+        error.message?.includes("unique constraint") ||
+        error.code === "23505"
       ) {
         return NextResponse.json(
           {
@@ -74,7 +133,12 @@ export async function POST(request: NextRequest) {
       }
 
       return NextResponse.json(
-        { error: "Failed to save data", details: error.message },
+        {
+          error: "Failed to save data",
+          details:
+            error.message ||
+            "Unknown error occurred. Please check server logs.",
+        },
         { status: 500 }
       );
     }

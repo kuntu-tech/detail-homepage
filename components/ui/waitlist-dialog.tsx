@@ -33,6 +33,8 @@ export const WaitlistDialog = ({
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string>("");
+  const [emailChecking, setEmailChecking] = useState(false);
+  const [emailError, setEmailError] = useState<string>("");
 
   // Reset form when dialog closes
   useEffect(() => {
@@ -44,12 +46,61 @@ export const WaitlistDialog = ({
       setSubmitted(false);
       setLoading(false);
       setError("");
+      setEmailError("");
+      setEmailChecking(false);
     }
   }, [open]);
 
+  // Check email availability with debounce
+  useEffect(() => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!email || !emailRegex.test(email)) {
+      setEmailError("");
+      return;
+    }
+
+    const checkEmail = async () => {
+      setEmailChecking(true);
+      setEmailError("");
+
+      try {
+        const response = await fetch("/api/waitlist/check-email", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email }),
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          setEmailError(data.error || "Failed to check email");
+          return;
+        }
+
+        if (!data.available) {
+          setEmailError("This email is already registered");
+        } else {
+          setEmailError("");
+        }
+      } catch (err) {
+        console.error("Email check error:", err);
+        // Don't show error for check failures, just silently fail
+      } finally {
+        setEmailChecking(false);
+      }
+    };
+
+    // Debounce: wait 500ms after user stops typing
+    const timeoutId = setTimeout(checkEmail, 500);
+
+    return () => clearTimeout(timeoutId);
+  }, [email]);
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(1132);
 
     if (
       name.trim() === "" ||
@@ -81,7 +132,11 @@ export const WaitlistDialog = ({
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || "提交失败，请重试");
+        // Show detailed error message if available
+        const errorMsg = data.details
+          ? `${data.error}: ${data.details}`
+          : data.error || "Failed to save data. Please try again.";
+        throw new Error(errorMsg);
       }
 
       // 保存到 localStorage
@@ -96,9 +151,11 @@ export const WaitlistDialog = ({
       }
     } catch (err) {
       const errorMessage =
-        err instanceof Error ? err.message : "提交失败，请重试";
+        err instanceof Error
+          ? err.message
+          : "Failed to save data. Please try again.";
       setError(errorMessage);
-      console.error("Waitlist 提交错误:", err);
+      console.error("Waitlist submission error:", err);
     } finally {
       setLoading(false);
     }
@@ -108,6 +165,7 @@ export const WaitlistDialog = ({
     name.trim() !== "" &&
     email.trim() !== "" &&
     email.includes("@") &&
+    !emailError &&
     selectedRole !== "" &&
     selectedCompanySize !== "";
 
@@ -203,9 +261,21 @@ export const WaitlistDialog = ({
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full bg-gray-200 rounded-lg py-3 px-4 text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-400 border border-transparent"
+                    className={`w-full bg-gray-200 rounded-lg py-3 px-4 text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 border ${
+                      emailError
+                        ? "border-red-500 focus:ring-red-400"
+                        : "border-transparent focus:ring-gray-400"
+                    }`}
                     placeholder=""
                   />
+                  {emailChecking && (
+                    <p className="mt-1 text-xs text-gray-500">
+                      Checking email...
+                    </p>
+                  )}
+                  {emailError && (
+                    <p className="mt-1 text-xs text-red-600">{emailError}</p>
+                  )}
                 </div>
 
                 {/* Role Selection */}
