@@ -77,13 +77,13 @@ export default function HomePage() {
               >
                 Pricing
               </a>
-              {/* <a
+              <a
                 href="https://community-mobile-web.onrender.com/"
                 rel="noopener noreferrer"
                 className="text-sm text-gray-300 hover:text-white transition-colors"
               >
                 Community
-              </a> */}
+              </a>
             </div>
 
             <div className="flex items-center gap-4">
